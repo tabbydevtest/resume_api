@@ -1,0 +1,31 @@
+version: "3.9"
+networks:
+  api:
+    driver: bridge
+
+services:
+  app:
+    build: ./app
+    container_name: "app"
+    networks:
+      - api
+    ports:
+      - '8080:8080'
+
+  nginx:
+    build: ./nginx
+    container_name: "nginx"
+    ports:
+      - '80:80'
+    networks:
+      - api
+    depends_on:
+      - app
+
+  redis-0:
+    build: ./redis/redis-0
+    container_name: "redis-0"
+    volumes:
+      - /tmp/resume/cache/redis/0:/data
+    networks:
+      - api
