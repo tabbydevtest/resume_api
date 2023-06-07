@@ -25,7 +25,5 @@ services:
   redis-0:
     build: ./redis/redis-0
     container_name: "redis-0"
-    volumes:
-      - /tmp/resume/cache/redis/0:/data
     networks:
       - api
