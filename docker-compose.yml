@@ -22,8 +22,8 @@ services:
     depends_on:
       - app
 
-  redis-0:
-    build: ./redis/redis-0
-    container_name: "redis-0"
+  redis-db:
+    build: ./redis
+    container_name: "redis-db"
     networks:
       - api
